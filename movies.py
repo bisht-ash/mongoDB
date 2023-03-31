@@ -12,7 +12,7 @@ class movies:
                 {"$match": {"imdb.rating":{"$ne":""}}},
                 {"$sort":{ "imdb.rating":-1}},
                 {"$limit":N},
-                {"$project":{"_id":0,"title":1,"imbd.rating":1}}
+                {"$project":{"_id":0,"title":1,"rating":"imdb.rating"}}
             ]
         elif choice==2:
             year=int(input("Enter the year: "))
@@ -20,14 +20,14 @@ class movies:
                     {"$match": { "$and":[ {"imdb.rating":{"$ne":""}},{"year":year} ]}},
                     {"$sort":{ "imdb.rating":-1}},
                     {"$limit":N},
-                    {"$project":{"_id":0,"title":1,"imbd.rating":1,"year":1}}
+                    {"$project":{"_id":0,"title":1,"rating":"$imdb.rating","year":1}}
                 ]
         elif choice==3:
             pipe=[
                     {"$match": { "$and":[ {"imdb.rating":{"$ne":""}},{"imdb.votes":{"$gte":1000}} ]}},
                     {"$sort":{ "imdb.rating":-1}},
                     {"$limit":N},
-                    {"$project":{"_id":0,"title":1,"imbd.rating":1,"imdb.votes":1}}
+                    {"$project":{"_id":0,"title":1,"rating":"$imdb.rating","votes":"$imdb.votes"}}
                 ]   
         elif choice==4:
             pat=input("Enter the pattern: ")
@@ -86,7 +86,7 @@ class movies:
         elif choice == 2:
             year=int(input("Enter the year: "))
             pipe=[
-                {"$match":{"year":2013}},
+                {"$match":{"year":year}},
                 {"$unwind":"$cast"},
                 {"$group":{"_id":"$cast","noOfMovies":{"$sum":1}}},
                 {"$sort":{"noOfMovies":-1}},
@@ -95,7 +95,7 @@ class movies:
         elif choice == 3:
             genre=input("Enter the genre: ")
             pipe=[
-                {"$match":{"genres":"Documentary"}},
+                {"$match":{"genres":genre}},
                 {"$unwind":"$cast"},
                 {"$group":{"_id":"$cast","noOfMovies":{"$sum":1}}},
                 {"$sort":{"noOfMovies":-1}},
@@ -116,7 +116,6 @@ class movies:
             genre=i['_id']
             print("Genre: "+genre)
             pipe=[
-                {"$unwind":"$genres"},
                 {"$match":{"genres":genre}},
                 {"$sort":{"imdb.rating":-1}},
                 {"$match":{"imdb.rating":{"$ne":""}}},

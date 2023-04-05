@@ -9,9 +9,9 @@
 
 #### 2. Comments
 
-- ``` query1 ``` function executes an aggregation query on the comments collection to group the comments by the commenter's name, sort them in descending order based on the count of comments, and limit the result to the top 10 commenters. The function then prints the result.
-- ``` query2 ``` function executes an aggregation query on the comments collection to group the comments by the movie_id field, sort them in descending order based on the count of comments, and limit the result to the top 10 movies. The function then prints the result.
-- ``` query3 ``` the function executes an aggregation query on the comments collection to group the comments by the month in which they were made and count the number of comments made in each month. The function then prints the result.
+- ``` query1() ``` function executes an aggregation query on the comments collection to group the comments by the commenter's name, sort them in descending order based on the count of comments, and limit the result to the top 10 commenters. The function then prints the result.
+- ``` query2() ``` function executes an aggregation query on the comments collection to group the comments by the movie_id field, sort them in descending order based on the count of comments, and limit the result to the top 10 movies. The function then prints the result.
+- ``` query3() ``` the function executes an aggregation query on the comments collection to group the comments by the month in which they were made and count the number of comments made in each month. The function then prints the result.
 
 ### 3. Movies
 
@@ -26,7 +26,7 @@
 - ```query32(year,n)```: This function takes an integer year and an integer n as input and returns the top n most frequently appearing actors in movies released in that year. It queries the MongoDB database myDB, filters the movies by their year field, groups the movies by their cast field using $unwind and $group operators, and sorts the results by the count of movies for each actor.
 - ```query33(genre,n)```: This function takes a string genre and an integer n as input and returns the top n most frequently appearing actors in movies of that genre. It queries the MongoDB database myDB, filters the movies by their genres field, groups the movies by their cast field using $unwind and $group operators.
 
-### Comments
+### 4. Comments
 
 - ```query11()```: This function performs an aggregation query on the "theaters" collection to group the data by the city field in the location.address subdocument, count the number of documents in each group, sort the result in descending order of the count, and return only the top 10 results.
 - ```query12()```: This function performs a geospatial aggregation query using the $geoNear operator to find the documents in the "theaters" collection that are closest to a specified location, which is represented by a longitude-latitude pair.

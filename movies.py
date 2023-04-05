@@ -12,7 +12,7 @@ class movies:
                 {"$match": {"imdb.rating":{"$ne":""}}},
                 {"$sort":{ "imdb.rating":-1}},
                 {"$limit":N},
-                {"$project":{"_id":0,"title":1,"rating":"imdb.rating"}}
+                {"$project":{"_id":0,"title":1,"rating":"$imdb.rating"}}
             ]
         elif choice==2:
             year=int(input("Enter the year: "))

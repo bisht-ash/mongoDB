@@ -7,11 +7,11 @@ def load():
   
 myclient = pymongo.MongoClient("mongodb://localhost:27017/")
 
-try:
-  mydb = myclient["mflix"]
-except:
-  load()
-  mydb = myclient["mflix"]
+mydb = myclient["mflix"]
+if len(list(mydb.list_collection_names())==0):
+    load()
+  
+mydb = myclient["mflix"]
 
 commentsCollection=mydb["comments"]
 moviesCollection=mydb["movies"]

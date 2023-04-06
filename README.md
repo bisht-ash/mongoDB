@@ -66,7 +66,7 @@ This function finds the top N movies for each genre with the highest IMDB rating
 This function finds the top 10 users who made the maximum number of comments. It uses MongoDB's aggregation pipeline to perform the required queries. The function returns the results in the form of an iterator. This function is well-implemented and should work as expected.
 - ```top10_movies_With_most_comment()```:
 This function finds the top 10 movies with the most comments. It uses MongoDB's aggregation pipeline to perform the required queries. The function returns the results by printing the title and number of comments for each movie. This function seems to be well-implemented and should work as expected.
-```month_wise_comment(year)```:
+- ```month_wise_comment(year)```:
 This function retrieves the count of comments made in each month of a given year from a MongoDB database using an aggregation pipeline. The pipeline projects the year and month from the date field, filters the documents by the given year, groups the comments by month and counts the number of comments in each group. The function then prints the results as a list. Overall, the function seems well-written and efficient.
 
 #### 4. Theaters

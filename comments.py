@@ -49,7 +49,8 @@ def main():
     elif ch==2:
         obj.top10MoviesWithMaxComment()
     elif ch==3:
-        obj.monthWiseComment()
+        year=int(input("Enter Year"))
+        obj.monthWiseComment(year)
     else:
         print("Wrong choice")
         
